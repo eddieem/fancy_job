@@ -2,7 +2,7 @@ name: Update Number
 
 on:
   schedule:
-    - cron: '0 6 * * *' # Adjust the schedule as needed (this runs daily at midnight)
+    - cron: '0 0 * * *' # Adjust the schedule as needed (this runs daily at midnight)
   workflow_dispatch: # Allows manual triggering
 
 jobs:
@@ -18,7 +18,9 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install transformers
+        run: |
+          pip install transformers
+          pip install tensorflow  # Adding TensorFlow installation
 
       - name: Run update_number.py
         env:
