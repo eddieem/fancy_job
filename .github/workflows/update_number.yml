@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install transformers
-          pip install tensorflow  # Adding TensorFlow installation
+          pip install torch  # Installing PyTorch instead of TensorFlow
 
       - name: Run update_number.py
         env:
