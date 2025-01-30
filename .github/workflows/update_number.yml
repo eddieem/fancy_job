@@ -2,7 +2,7 @@ name: Update Number
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Adjust the schedule as needed (this runs daily at midnight)
+    - cron: '0 6 * * *' # Adjust the schedule as needed (this runs daily at midnight)
   workflow_dispatch: # Allows manual triggering
 
 jobs:
