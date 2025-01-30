@@ -1,0 +1,26 @@
+name: Update Number
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Adjust the schedule as needed (this runs daily at midnight)
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  update-number:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install transformers
+
+      - name: Run update_number.py
+        env:
+          FANCY_JOB_USE_LLM: true
+        run: python update_number.py
