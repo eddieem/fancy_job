@@ -1,0 +1,28 @@
+name: Commit every hour
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    env:
+      USER_EMAIL: edward.emeka@owasp.org  # Add your email here
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Make a commit
+      run: |
+        echo "$(date)" > commit.txt
+        git config --global user.name "Ed Emeka"
+        git config --global user.email "${{ env.USER_EMAIL }}"
+        git add commit.txt
+        git commit -m "Automated commit $(date)"
+        git push
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.AUTO_TOKEN }}
