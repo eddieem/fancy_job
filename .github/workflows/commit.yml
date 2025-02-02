@@ -15,6 +15,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Check email
+      run: echo "Configured email: ${{ env.USER_EMAIL }}"
+
     - name: Make a commit
       env:
         GITHUB_TOKEN: ${{ secrets.AUTO_TOKEN }}
