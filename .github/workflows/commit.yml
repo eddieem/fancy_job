@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      USER_EMAIL: edward.emeka@owasp.org  # Add your email here
+      USER_EMAIL: maduemeka74@gmail.com  # Add your email here
 
     steps:
     - name: Checkout repository
