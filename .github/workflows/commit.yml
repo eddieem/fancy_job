@@ -18,11 +18,11 @@ jobs:
 
     - name: Make a commit
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        AUTO_TOKEN: ${{ secrets.AUTO_TOKEN }}
       run: |
         echo "$(date)" > commit.txt
         git config --global user.name "eddieem"
-        git config --global user.email "maduemeka74@gmail.com"
+        git config --global user.email "edward.emeka@owasp.org"
         git add commit.txt
         git commit -m "Automated commit $(date)"
         git push
