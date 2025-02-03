@@ -12,16 +12,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Check email
-      run: echo "Configured email:${{ env.USER_EMAIL }}"
-
     - name: Make a commit
       env:
         GITHUB_TOKEN: ${{ secrets.AUTO_TOKEN }}
       run: |
         echo "$(date)" > commit.txt
-        git config --global user.name "Ed Emeka"
-        git config --global user.email "${{ env.USER_EMAIL }}"
+        git config --global user.name "eddieem"
         git add commit.txt
         git commit -m "Automated commit $(date)"
         git push
