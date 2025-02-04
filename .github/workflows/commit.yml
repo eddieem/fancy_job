@@ -14,7 +14,7 @@ jobs:
     - name: Make changes
       run: |
         # Your commands to make changes go here
-        echo "Automated commit $(date)" >> file.txt
+        echo "Automated commit $(date)" >> commit.txt
 
     - name: Commit changes
       run: |
