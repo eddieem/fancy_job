@@ -1,27 +1,28 @@
-name: Commit Changes
+name: Commit every hour
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 * * * *' # This runs the action every hour
+    - cron: '0 * * * *'  # Runs hour
+
+permissions:
+  contents: write
 
 jobs:
   commit:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Make changes
-      run: |
-        # Your commands to make changes go here
-        echo "Automated commit $(date)" >> commit.txt
-
-    - name: Commit changes
-      run: |
-        git config --global user.email "edward.emeka@owasp.org"
-        git config --global user.name "eddieem"
-        git add .
-        git commit -m "Automated commit $(date)"
-        git push
+    - name: Make a commit
       env:
         AUTO_TOKEN: ${{ secrets.AUTO_TOKEN }}
+      run: |
+        echo "$(date)" > commit.txt
+        git config --global user.name "eddieem"
+        git config --global user.email "edward.emeka@owasp.org"
+        git add commit.txt
+        git commit -m "Automated commit $(date)"
+        git push
