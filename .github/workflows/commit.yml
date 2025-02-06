@@ -3,7 +3,7 @@ name: Commit every hour
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'  # Runs hour
+    - cron: '0 * * * *'  # Runs hour
 
 permissions:
   contents: write
